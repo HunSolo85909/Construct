@@ -13,14 +13,12 @@ public class Menu : MonoBehaviour
 
     private void Awake()
     {
-        audioMixer.SetFloat("volume", PlayerPrefs.GetFloat("Volume"));
+        
     }
 
     private void Start()
     {
-        //Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("Fullscreen"));
-        
-        //QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
+        audioMixer.SetFloat("volume", PlayerPrefs.GetFloat("Volume", -20f));
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

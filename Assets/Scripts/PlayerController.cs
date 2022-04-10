@@ -46,12 +46,15 @@ public class PlayerController : MonoBehaviour
     private RigidbodyFirstPersonController rbfps;
     private Rigidbody rb;
     private Vector3 RecordedMoveToPosition;
-    private Vector3 RecordedStartPosition; 
+    private Vector3 RecordedStartPosition;
+
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         rbfps = GetComponent<RigidbodyFirstPersonController>();
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -198,7 +201,18 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
+        //footstep sound
+        if(rbfps.Grounded && rb.velocity.magnitude > 2f || WallRunning && rb.velocity.magnitude > 2f)
+        {
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+        }
     }
   
 }

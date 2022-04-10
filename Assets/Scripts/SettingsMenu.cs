@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
+using UnityEngine.UI;
+using System;
 
 public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
-    public GameObject fullscreenToggle;
-    public GameObject volumeSlider;
+    public Toggle fullscreenToggle;
+    public Slider volumeSlider;
     Resolution[] resolutions;
 
     void Start()
@@ -34,6 +36,10 @@ public class SettingsMenu : MonoBehaviour
             resolutionDropdown.value = PlayerPrefs.GetInt("Resolution");
         resolutionDropdown.RefreshShownValue();
 
+        audioMixer.SetFloat("volume", PlayerPrefs.GetFloat("Volume", -20f));
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        fullscreenToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("Fullscreen",1));
+        qualityDropdown.value = PlayerPrefs.GetInt("Quality", 2);
     }
 
     public void SetVolume(float volume)
