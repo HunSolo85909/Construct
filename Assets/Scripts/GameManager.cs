@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void Finish()
     {
+        
         endScreen.SetActive(true);
         Time.timeScale = 0f;
         Stopwatch.StopStopwatch();

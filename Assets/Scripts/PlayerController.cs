@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //footstep sound
-        if(rbfps.Grounded && rb.velocity.magnitude > 2f || WallRunning && rb.velocity.magnitude > 2f)
+        if(rbfps.Grounded && rb.velocity.magnitude > 2f && !GameManager.isComplete && !PauseMenu.isPaused || WallRunning && rb.velocity.magnitude > 2f && !GameManager.isComplete && !PauseMenu.isPaused)
         {
             if(!audioSource.isPlaying)
             {

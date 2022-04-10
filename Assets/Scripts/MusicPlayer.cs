@@ -20,7 +20,7 @@ public class MusicPlayer : MonoBehaviour
         }
         else
         {
-            DestroyObject(gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -28,11 +28,5 @@ public class MusicPlayer : MonoBehaviour
     void Start()
     {
         audioSource.Play();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
