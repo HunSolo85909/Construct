@@ -147,11 +147,13 @@ public class PlayerController : MonoBehaviour
         {
             WallrunningLeft = false;
             WallrunningRight = false;
+            canwallrun = true;
         }
         if (WallrunningRight && !DetectWallR.Obstruction || Input.GetAxisRaw("Vertical") <= 0f || rbfps.relativevelocity.magnitude < 1f) 
         {
             WallrunningLeft = false;
             WallrunningRight = false;
+            canwallrun = true;
         }
 
         if (WallrunningLeft || WallrunningRight) 
@@ -193,6 +195,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = transform.forward * WallJumpForwardVelocity + transform.up * WallJumpUpVelocity;
                 WallrunningLeft = false;
                 WallrunningRight = false;
+                StartCoroutine(WallrunWait());
             }
             if(rbfps.Grounded)
             {
@@ -214,5 +217,10 @@ public class PlayerController : MonoBehaviour
             audioSource.Stop();
         }
     }
-  
+
+    IEnumerator WallrunWait()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canwallrun = true;
+    }
 }

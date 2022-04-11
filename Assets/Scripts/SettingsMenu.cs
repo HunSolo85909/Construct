@@ -23,7 +23,7 @@ public class SettingsMenu : MonoBehaviour
         int index = 0;
         for (int i = 0; i < resolutions.Length; i++)
         {
-            options.Add(resolutions[i].width + " x " + resolutions[i].height);
+            options.Add(resolutions[i].width + " x " + resolutions[i].height + " @ " + resolutions[i].refreshRate);
             if (resolutions[i].height == Screen.currentResolution.height && resolutions[i].width == Screen.currentResolution.width)
             {
                 index = i;
@@ -37,7 +37,7 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
 
         audioMixer.SetFloat("volume", PlayerPrefs.GetFloat("Volume", -20f));
-        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume", -20f);
         fullscreenToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("Fullscreen",1));
         qualityDropdown.value = PlayerPrefs.GetInt("Quality", 2);
     }

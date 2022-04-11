@@ -9,6 +9,7 @@ using System;
 public class LevelSelect : MonoBehaviour
 {
     public TMP_Text level1;
+    public TMP_Text level2;
     public TMP_Text sandbox;
     void Start()
     {
@@ -16,6 +17,11 @@ public class LevelSelect : MonoBehaviour
         if (PlayerPrefs.HasKey("Level1"))
         {
             time = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("Level1"));
+            level1.text = time.ToString(@"mm\:ss\:fff");
+        }
+        if (PlayerPrefs.HasKey("Level2"))
+        {
+            time = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("Level2"));
             level1.text = time.ToString(@"mm\:ss\:fff");
         }
         if (PlayerPrefs.HasKey("Sandbox"))
