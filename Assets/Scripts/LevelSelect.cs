@@ -22,7 +22,7 @@ public class LevelSelect : MonoBehaviour
         if (PlayerPrefs.HasKey("Level2"))
         {
             time = TimeSpan.FromSeconds(PlayerPrefs.GetFloat("Level2"));
-            level1.text = time.ToString(@"mm\:ss\:fff");
+            level2.text = time.ToString(@"mm\:ss\:fff");
         }
         if (PlayerPrefs.HasKey("Sandbox"))
         {
